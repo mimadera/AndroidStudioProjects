@@ -1,0 +1,58 @@
+[
+  {
+    "longitude": 17.033329,
+    "latitude": 51.109980,
+    "eventsName": "Bernard",
+    "category": "Restauracje",
+    "description": "BERNARD to restauracja, a zarazem piwiarnia, mieszcząca sięw zabytkowej kamienicy na wrocławskim Rynku.Przewodnią ideą było stworzenie miejsca, którego wystrój,kuchnia i atmosfera wprowadzikażdego Gościa w znakomity nastrój i każdemu uprzyjemni czas.Karta MENU zawsze tworzona jest z myślą o preferencjach kulinarnych naszych Gości,o ich smakach i gustach.Kucharze BERNARDA inspiracje czerpią z tradycji kuchni czeskiej,europejskiej, dolnośląskiej,a także z najnowszych trendów i technologii przyrządzania potraw.Bazując na naturalnych, sezonowych produktach, uwielbiają przyrządzać stare,tradycyjne przepisy we współczesnych formach i aranżacjach.Szef Kuchni codziennie czuwa nad jakością wszystkich potraw,szuka niebanalnych pomysłów i eksperymentuje,by stale odkrywać przed naszymi Gośćmi nowe smaki i aromaty. ",
+    "photo": ""
+  },
+  {
+    "longitude": 17.030819,
+    "latitude": 51.106038,
+    "eventsName": "Monopol",
+    "category": "Restauracje",
+    "description": "Restauracja Monopol to kuchnia polska w nowatorskim ujęciu i niespotykanych aranżacjach. Zmieniająca się wraz z porami roku karta dań, nawiązuje do starych, sprawdzonych receptur, nadając im jednocześnie współczesny charakter.Szlachetność wnętrz i różnorodność smaków proponowanych w hotelowej restauracji sprawiają, iż spędzone w niej chwile na długo pozostają w pamięci.Jej stuletnie dzieje związane są z losami przedwojennej Polski: eleganckie lata dwudzieste oraz szalona atmosfera lat trzydziestych. Ten najbardziej luksusowy lokal tamtych czasów był świadkiem wystawnych rautów, niezliczonych przyjęć i towarzyskich spotkań.Otwarte codziennie od 12:00-23:00",
+    "photo": ""
+  },
+  {
+    "longitude": 17.033710,
+    "latitude": 51.110802,
+    "eventsName": "Masala Grill & Bar",
+    "category": "Kuchnia Indyjska",
+    "description": "Nasza restauracja na nowo odsłania sekrety kuchni wschodniej przez połączenie tradycyjnych receptur z Półwyspu Indyjskiego z gustami europejskimi. Nasi goście mają niepowtarzalną okazję odbycia kulinarnej przygody w najlepszym wydaniu.Starannie zaaranżowanym wnętrzom Masali nieprzypadkowo patronują słonie. Są one symbolem szczęścia i powodzenia. Wierzymy, że dobra energia udzieli się także naszym Gościom.Prawdziwie indyjskie potrawy są przygotowywane przez rodowitych kucharzy na Państwa oczach. Tradycyjne podpłomyki, mięsa i ryby grillowane w piecu z węglem drzewnym oraz sery własnej produkcji to nasza specjalność.Zapraszamy do stołu",
+    "photo": ""
+  },
+  {
+    "longitude": 17.031069,
+    "latitude": 51.110987,
+    "eventsName": "Pizza Dominium",
+    "category": "Fast Food",
+    "description": "Restauracja Pizza Dominium we Wrocławiu mieści się na samym rynku. W sezonie letnim do dyspozycji gości jest ogródek z którego można podziwiać piękną architekturę starówki.W lokalu dla naszych klientów została udostępniona bezpłatna sieć Wi-Fi. Dodatkowe informacjeDowóz na telefon.Zamówienia on-line.Minimalna wartość zamówieniaw dostawie 25 zł.Bezpłatna dostawa.Płatność kartą w lokalu i dostawie.Organizujemy przyjęcia urodzinowedla dzieci.Sezonowy ogródek.",
+    "photo": ""
+  },
+  {
+    "longitude": 17.032605,
+    "latitude": 51.110717,
+    "eventsName": "Pizza Hut",
+    "category": "Fast Food",
+    "description": "W lokalach Pizzy Hut oprócz pizzy serwuje się również makarony, calzoni, tortille, sałatki, przystawki, desery oraz różnego rodzaju napoje.Pizza dostępna jest na grubym cieście Pan, delikatnym w środku i wyrośniętym na brzegach cieście Tradycyjnym, bardzo cienkim Tuscani. Pizza dostępna jest również na cieście Tradycyjnym z serem w brzegach.Dostępne są 4 rodzaje makaronów: penne, tagliatelle, spaghetti i farfalle, oraz różne rodzaje sosów: pomidorowe, bolońskie, beszamelowe, pesto oraz funghi. W wielu lokalach dostępne są płatne bary sałatkowe.",
+    "photo": ""
+  },
+  {
+    "longitude": 17.042695,
+    "latitude": 51.104348,
+    "eventsName": "Bar Orientalny Ha Longr",
+    "category": "Kuchnia Chińska",
+    "description": "Kuchnia Chińska\n Zapraszamy !",
+    "photo": ""
+  },
+  {
+    "longitude": 17.031999,
+    "latitude": 51.110878,
+    "eventsName": "Witaminka",
+    "category": "Kawiarnie",
+    "description": "Idealne miejsce na spotkanie, randkę czy przerwę podczas zwiedzania Wrocławia.Najstarsze i najbardziej znane słodkie miejsce na wrocławskim Rynku. Odwiedzając Wrocław nie zapomnij odwiedzić nas i skosztować na miejscu (lub zabrać na wynos) kilku kawałków domowego ciasta...",
+    "photo": ""
+  }
+]

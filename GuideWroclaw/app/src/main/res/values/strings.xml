@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">Wroclaw</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="noFilter">no filter</string>
+    <string name="search">Search</string>
+    <string name="food">Food</string>
+    <string name="places">Places</string>
+    <string name="tour_route">Tour Route</string>
+    <string name="events">Events</string>
+
+
+</resources>
