@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CurrenyExchange</string>
+
+    <string-array name="currency">
+        <item>Choose currency</item>
+        <item>Dolar</item>
+        <item>Euro</item>
+        <item>Rubles</item>
+        <item>Funt</item>
+    </string-array>
+</resources>
