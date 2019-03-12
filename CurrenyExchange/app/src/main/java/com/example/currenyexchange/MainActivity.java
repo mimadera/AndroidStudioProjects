@@ -11,38 +11,40 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.ArrayList;
-import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
+    //GUI
     private Button buttonClear;
     private Button buttonResult;
+
+    // value entered by user, result and chosenCurrency
     double result;
-    double euro = 4.30;
-    double dolar = 3.83;
-    double funt = 4.96;
-    double rubles = 0.0535;
-    String text;
-
     double valueFromUser;
+    double chosenCurrency;
 
+    // currency value in zl
+    final double  euro = 4.30;
+    final double dolar = 3.83;
+    final double funt = 4.96;
+    final double rubles = 0.0535;
 
-
+    private String chosenCurrencyText;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
         // Spinner element
         final Spinner spinner = (Spinner) findViewById(R.id.spinner);
         final TextView textViewResult = (TextView) findViewById(R.id.textViewResult);
         final EditText editText2 = (EditText) findViewById(R.id.editText2);
-        spinner.setPrompt("Choose currency");
         editText2.setText("");
+
+        /*
+        array currency is in location res/values/strings.xml
+         */
 
         final ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(this, R.array.currency, android.R.layout.simple_spinner_item);
 
@@ -58,7 +60,6 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
             public void onClick(View v) {
                 textViewResult.setText(" ");
                 editText2.setText(" ");
-                result = 0;
 
             }
         });
@@ -67,10 +68,11 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
         buttonResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String finalResult = Double.toString(result);
-                textViewResult.setText(finalResult);
                 String value = String.valueOf(editText2.getText());
                 valueFromUser = Double.parseDouble(value);
+                result = chosenCurrency * valueFromUser;
+                String finalResult = Double.toString(result);
+                textViewResult.setText(finalResult);
 
 
                 editText2.setText(" ");
@@ -81,27 +83,25 @@ public class MainActivity extends AppCompatActivity implements AdapterView.OnIte
 
     @Override
     public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-        text = parent.getItemAtPosition(position).toString();
-        if(text.equals("Euro")){
-            result = euro * valueFromUser;
+        chosenCurrencyText = parent.getItemAtPosition(position).toString();
+        if(chosenCurrencyText.equals("Euro")){
+            chosenCurrency = euro;
         }
-        if(text.equals("Dolar")){
-            result = dolar * valueFromUser;
+        if(chosenCurrencyText.equals("Dolar")){
+            chosenCurrency = dolar;
         }
-        if(text.equals("Funt")){
-            result = funt * valueFromUser;
+        if(chosenCurrencyText.equals("Funt")){
+            chosenCurrency = funt;
         }
-        if(text.equals("Rubles")){
-            result = rubles * valueFromUser;
+        if(chosenCurrencyText.equals("Rubles")){
+            chosenCurrency = rubles;
         }
-        Toast.makeText(parent.getContext(), text, Toast.LENGTH_SHORT).show();
-
+        Toast.makeText(parent.getContext(), chosenCurrencyText, Toast.LENGTH_SHORT).show();
     }
 
     @Override
     public void onNothingSelected(AdapterView<?> parent) {
 
     }
-
 
 }
