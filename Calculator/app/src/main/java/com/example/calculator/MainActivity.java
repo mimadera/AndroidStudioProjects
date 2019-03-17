@@ -27,9 +27,16 @@ public class MainActivity extends AppCompatActivity {
     private Button BtnPlus;
     private Button BtnMinus;
     private Button BtnProcent;
+    private Button BtnComma;
 
-    private TextView userInput;
-    private TextView results;
+    private double value1 = Double.NaN;
+    private double value2;
+
+    EditText userInput;
+    TextView results;
+
+
+    String action;
 
 
     @Override
@@ -37,151 +44,223 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        final TextView partialResults = (TextView) findViewById(R.id.results);
-        final TextView result = (TextView) findViewById(R.id.userInput);
+        results = findViewById(R.id.results);
+        userInput = findViewById(R.id.userInput);
+        Btn0 = findViewById(R.id.Btn0);
+        Btn1 = findViewById(R.id.Btn1);
+        Btn2 = findViewById(R.id.Btn2);
+        Btn3 = findViewById(R.id.Btn3);
+        Btn4 = findViewById(R.id.Btn4);
+        Btn5 = findViewById(R.id.Btn5);
+        Btn6 = findViewById(R.id.Btn6);
+        Btn7 = findViewById(R.id.Btn7);
+        Btn8 = findViewById(R.id.Btn8);
+        Btn9 = findViewById(R.id.Btn9);
 
-        BtnResult = (Button) findViewById(R.id.BtnResult);
-        BtnResult.setOnClickListener(new View.OnClickListener() {
+        BtnMinus = findViewById(R.id.BtnMinus);
+        BtnProcent = findViewById(R.id.BtnProcent);
+        BtnPlus = findViewById(R.id.BtnPlus);
+        BtnPlusMinus = findViewById(R.id.BtnPlusMinus);
+        BtnDiv = findViewById(R.id.BtnDiv);
+        BtnResult = findViewById(R.id.BtnResult);
+        BtnMult = findViewById(R.id.BtnMult);
+        BtnAC = findViewById(R.id.BtnAC);
+        BtnComma = findViewById(R.id.BtnComma);
+
+        BtnAC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                userInput.setText(null);
+                value2=0;
+                value1=0;
 
             }
         });
 
-        BtnProcent = (Button) findViewById(R.id.BtnProcent);
-        BtnProcent.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        BtnDiv = (Button) findViewById(R.id.BtnDiv);
-        BtnDiv.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        BtnMult = (Button) findViewById(R.id.BtnMult);
-        BtnMult.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-
-            }
-        });
-
-        BtnPlus = (Button) findViewById(R.id.BtnPlus);
         BtnPlus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                action = "+";
+                if(!Double.isNaN(value1)){
+                    value2= Double.parseDouble(userInput.getText().toString());
+                    value1 = value1 + value2;
+                } else {
+                    value1 = Double.parseDouble(userInput.getText().toString());
+                }
+                results.setText(value1 + " + ");
+                userInput.setText(null);
+
             }
         });
 
-        BtnMinus = (Button) findViewById(R.id.BtnMinus);
         BtnMinus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                action = "-";
+                if(!Double.isNaN(value1)){
+                    value2= Double.parseDouble(userInput.getText().toString());
+                    value1 = value1 - value2;
+                } else {
+                    value1 = Double.parseDouble(userInput.getText().toString());
+                }
+                results.setText(value1 + " - ");
+                userInput.setText(null);
+
             }
         });
 
-        BtnPlusMinus = (Button) findViewById(R.id.BtnPlusMinus);
-        BtnPlusMinus.setOnClickListener(new View.OnClickListener() {
+        BtnMult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                action = "*";
+                if(!Double.isNaN(value1)){
+                    value2= Double.parseDouble(userInput.getText().toString());
+                    value1 = value1 * value2;
+                } else {
+                    value1 = Double.parseDouble(userInput.getText().toString());
+                }
+                results.setText(value1 + " * ");
+                userInput.setText(null);
+
             }
         });
 
-        BtnAC = (Button) findViewById(R.id.BtnAC);
-        BtnAC.setOnClickListener(new View.OnClickListener() {
+        BtnDiv.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                action = "+";
+                if(!Double.isNaN(value1)){
+                    value2= Double.parseDouble(userInput.getText().toString());
+                    value1 = value1 / value2;
+                } else {
+                    value1 = Double.parseDouble(userInput.getText().toString());
+                }
+                results.setText(value1 + " / ");
+                userInput.setText(null);
+
             }
         });
 
-        Btn0 = (Button) findViewById(R.id.Btn0);
-        Btn0.setOnClickListener(new View.OnClickListener() {
+        BtnResult.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
+                if (action != null && action.equals("+")) {
+                    double result = value1 + Double.parseDouble(userInput.getText().toString());
+                    results.setText(null);
+                    userInput.setText(String.valueOf(result));
+                }else if (action != null && action.equals("-")) {
+                    double result = value1 - Double.parseDouble(userInput.getText().toString());
+                    results.setText(null);
+                    userInput.setText(String.valueOf(result));
+                }else if (action != null && action.equals("*")) {
+                    double result = value1 * Double.parseDouble(userInput.getText().toString());
+                    results.setText(null);
+                    userInput.setText(String.valueOf(result));
+                }else if (action != null && action.equals("/")) {
+                    double result = value1 / Double.parseDouble(userInput.getText().toString());
+                    results.setText(null);
+                    userInput.setText(String.valueOf(result));
+                }
+                action = null;
+                value1 = Double.NaN;
+                userInput.setSelection(userInput.getText().length());
+
             }
         });
 
-        Btn1 = (Button) findViewById(R.id.Btn1);
+        BtnComma.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userInput.setText(userInput.getText() + ".");
+                userInput.setSelection(userInput.getText().length());
+            }
+        });
+
         Btn1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                userInput.setText(userInput.getText() + "1");
+                userInput.setSelection(userInput.getText().length());
             }
         });
 
-        Btn2 = (Button) findViewById(R.id.Btn2);
         Btn2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                userInput.setText(userInput.getText() + "2");
+                userInput.setSelection(userInput.getText().length());
             }
         });
-
-        Btn3 = (Button) findViewById(R.id.Btn3);
         Btn3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                userInput.setText(userInput.getText() + "3");
+                userInput.setSelection(userInput.getText().length());
             }
         });
 
-        Btn4 = (Button) findViewById(R.id.Btn4);
         Btn4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                userInput.setText(userInput.getText() + "4");
+                userInput.setSelection(userInput.getText().length());
             }
         });
 
-        Btn5 = (Button) findViewById(R.id.Btn5);
         Btn5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                userInput.setText(userInput.getText() + "5");
+                userInput.setSelection(userInput.getText().length());
             }
         });
 
-        Btn6 = (Button) findViewById(R.id.Btn6);
         Btn6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                userInput.setText(userInput.getText() + "6");
+                userInput.setSelection(userInput.getText().length());
             }
         });
 
-        Btn7 = (Button) findViewById(R.id.Btn7);
         Btn7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                userInput.setText(userInput.getText() + "7");
+                userInput.setSelection(userInput.getText().length());
             }
         });
-        Btn8 = (Button) findViewById(R.id.Btn8);
+
         Btn8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                userInput.setText(userInput.getText() + "8");
+                userInput.setSelection(userInput.getText().length());
             }
         });
 
-        Btn9 = (Button) findViewById(R.id.Btn9);
         Btn9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                userInput.setText(userInput.getText() + "9");
+                userInput.setSelection(userInput.getText().length());
             }
         });
+
+        Btn0.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userInput.setText(userInput.getText() + "0");
+                userInput.setSelection(userInput.getText().length());
+            }
+        });
+
+
 
     }
 }
