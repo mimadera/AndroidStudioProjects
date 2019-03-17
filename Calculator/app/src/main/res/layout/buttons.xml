@@ -207,6 +207,8 @@
         android:layout_marginLeft="5dp"
         android:layout_marginRight="5dp"
         android:layout_gravity="fill_horizontal"
+        android:layout_columnSpan="2"
+
 
         />
     <Button
