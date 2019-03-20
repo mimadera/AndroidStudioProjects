@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
     private Button BtnMinus;
     private Button BtnProcent;
     private Button BtnComma;
+    private Button BtnC;
 
     private double value1 = Double.NaN;
     private double value2;
@@ -65,15 +66,14 @@ public class MainActivity extends AppCompatActivity {
         BtnResult = findViewById(R.id.BtnResult);
         BtnMult = findViewById(R.id.BtnMult);
         BtnAC = findViewById(R.id.BtnAC);
+        BtnC = findViewById(R.id.BtnC);
         BtnComma = findViewById(R.id.BtnComma);
 
         BtnAC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 userInput.setText(null);
-                value2=0;
-                value1=0;
-
+                results.setText(null);
             }
         });
 
@@ -90,6 +90,36 @@ public class MainActivity extends AppCompatActivity {
                 }
                 results.setText(value1 + " + ");
                 userInput.setText(null);
+
+            }
+        });
+
+        BtnPlusMinus.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                action = "+-";
+                if(!Double.isNaN(value1)) {
+                    value2= Double.parseDouble(userInput.getText().toString());
+                    results.setText((value2 * -1) + "");
+                    userInput.setText(null);
+                }
+
+            }
+        });
+
+        BtnC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                action = "+-";
+                if(!Double.isNaN(value1)) {
+                    value2= Double.parseDouble(userInput.getText().toString());
+                    results.setText((value2 * -1) + "");
+                    userInput.setText(null);
+                    BtnC.setVisibility(View.GONE);
+                    //stopButton.setVisibility(View.VISIBLE);
+                }
 
             }
         });
