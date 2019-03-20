@@ -3,9 +3,14 @@ package com.example.calculator;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ListView;
 import android.widget.TextView;
+
+import java.util.ArrayList;
+import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -29,6 +34,8 @@ public class MainActivity extends AppCompatActivity {
     private Button BtnProcent;
     private Button BtnComma;
     private Button BtnC;
+    private ListView list ;
+    private ArrayAdapter<String> adapter ;
 
     private double value1 = Double.NaN;
     private double value2;
@@ -44,6 +51,17 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        list = (ListView) findViewById(R.id.historyOfCalculation);
+
+        String historyOfCalc[] = {};
+
+        final ArrayList<String> historyList = new ArrayList<String>();
+        historyList.addAll( Arrays.asList(historyOfCalc) );
+
+        adapter = new ArrayAdapter<String>(this, R.layout.activity_main, historyList);
+
+        list.setAdapter(adapter);
 
         results = findViewById(R.id.results);
         userInput = findViewById(R.id.userInput);
@@ -72,6 +90,13 @@ public class MainActivity extends AppCompatActivity {
         BtnAC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
+                if (userInput.getText().equals(null)) {
+                    BtnAC.setVisibility(View.VISIBLE);
+                } else {
+                    BtnAC.setVisibility(View.GONE);
+                }
+
                 userInput.setText(null);
                 results.setText(null);
             }
@@ -112,15 +137,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                action = "+-";
-                if(!Double.isNaN(value1)) {
-                    value2= Double.parseDouble(userInput.getText().toString());
-                    results.setText((value2 * -1) + "");
-                    userInput.setText(null);
-                    BtnC.setVisibility(View.GONE);
-                    //stopButton.setVisibility(View.VISIBLE);
+                if (userInput.getText() != null) {
+                    BtnAC.setVisibility(View.GONE);
+                } else {
+                    BtnAC.setVisibility(View.VISIBLE);
                 }
-
             }
         });
 
@@ -183,18 +204,22 @@ public class MainActivity extends AppCompatActivity {
                     double result = value1 + Double.parseDouble(userInput.getText().toString());
                     results.setText(null);
                     userInput.setText(String.valueOf(result));
+                    historyList.add(String.valueOf(result));
                 }else if (action != null && action.equals("-")) {
                     double result = value1 - Double.parseDouble(userInput.getText().toString());
                     results.setText(null);
                     userInput.setText(String.valueOf(result));
+                    historyList.add(String.valueOf(result));
                 }else if (action != null && action.equals("*")) {
                     double result = value1 * Double.parseDouble(userInput.getText().toString());
                     results.setText(null);
                     userInput.setText(String.valueOf(result));
+                    historyList.add(String.valueOf(result));
                 }else if (action != null && action.equals("/")) {
                     double result = value1 / Double.parseDouble(userInput.getText().toString());
                     results.setText(null);
                     userInput.setText(String.valueOf(result));
+                    historyList.add(String.valueOf(result));
                 }
                 action = null;
                 value1 = Double.NaN;
