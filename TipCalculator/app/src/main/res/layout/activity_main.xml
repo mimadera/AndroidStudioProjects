@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
         android:layout_marginBottom="25dp"
-        android:text="How much you wanna tip:"
+        android:text="How much percent of bill you wanna tip:"
         app:layout_constraintBottom_toTopOf="@+id/spinner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,13 +20,14 @@
 
     <Spinner
         android:id="@+id/spinner"
-        android:layout_width="395dp"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
         android:layout_marginTop="25dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView" />
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        android:background="#D4E157"/>
 
     <EditText
         android:id="@+id/editText2"
@@ -99,7 +100,7 @@
         android:layout_marginTop="74dp"
         android:layout_marginEnd="82dp"
         android:layout_marginBottom="70dp"
-        android:text="Result:"
+        android:text="Result"
         app:layout_constraintBottom_toTopOf="@+id/buttonResult"
         app:layout_constraintEnd_toStartOf="@+id/textViewResult"
         app:layout_constraintStart_toStartOf="parent"
