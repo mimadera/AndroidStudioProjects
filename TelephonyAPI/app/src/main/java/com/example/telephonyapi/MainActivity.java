@@ -1,19 +1,26 @@
 package com.example.telephonyapi;
 
 import android.Manifest;
-import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.IntentFilter;
 import android.content.pm.PackageManager;
+import android.provider.Telephony;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
 import android.widget.TextView;
-import android.widget.Toast;
 
-public class MainActivity extends AppCompatActivity {
+
+
+public class MainActivity extends AppCompatActivity{
 
     private TextView textViewSFID;
+    private SmsBroadcastReceiver smsBroadcastReceiver;
+
+    private final String serviceProviderNumber = "";
+    private final String serviceProviderSmsCondition = "";
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -21,6 +28,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         textViewSFID = findViewById(R.id.textViewSFID);
+        smsBroadcastReceiver = new SmsBroadcastReceiver(BuildConfig.SERVICE_NUMBER, BuildConfig.SERVICE_CONDITION);
+        registerReceiver(smsBroadcastReceiver, new IntentFilter(Telephony.Sms.Intents.SMS_RECEIVED_ACTION));
 
         //    <--- task 1 --->
         TelephonyManager telephonyManager = (TelephonyManager)
@@ -51,7 +60,8 @@ public class MainActivity extends AppCompatActivity {
                             "SIM Serial Number " + SIMSerialNumber + System.lineSeparator() +
                             "Software Version " + softwareVersion + System.lineSeparator());
 
-
-
     }
+
+
 }
+
