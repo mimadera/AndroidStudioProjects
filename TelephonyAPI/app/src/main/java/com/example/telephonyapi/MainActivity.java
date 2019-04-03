@@ -2,9 +2,9 @@ package com.example.telephonyapi;
 
 import android.Manifest;
 import android.content.Context;
-import android.content.IntentFilter;
+import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.provider.Telephony;
+import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,13 +13,10 @@ import android.widget.TextView;
 
 
 
+
 public class MainActivity extends AppCompatActivity{
 
     private TextView textViewSFID;
-    private SmsBroadcastReceiver smsBroadcastReceiver;
-
-    private final String serviceProviderNumber = "";
-    private final String serviceProviderSmsCondition = "";
 
 
     @Override
@@ -27,9 +24,21 @@ public class MainActivity extends AppCompatActivity{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textViewSFID = findViewById(R.id.textViewSFID);
-        smsBroadcastReceiver = new SmsBroadcastReceiver(BuildConfig.SERVICE_NUMBER, BuildConfig.SERVICE_CONDITION);
-        registerReceiver(smsBroadcastReceiver, new IntentFilter(Telephony.Sms.Intents.SMS_RECEIVED_ACTION));
+        Bundle extras = getIntent().getExtras();
+        if (extras != null) {
+            String address = extras.getString("MessageNumber");
+            String message = extras.getString("Message");
+            TextView addressField = (TextView) findViewById(R.id.textViewAddress);
+            TextView messageField = (TextView) findViewById(R.id.textViewMessage);
+            addressField.setText("Message From : " +address);
+            messageField.setText("Messsage : "+message);
+            Intent intent = new Intent(
+                    Intent.ACTION_SENDTO,
+                    Uri.parse("smsto:"+address));
+            intent.putExtra("sms_body",
+                    "Michal Madera");
+            startActivity(intent);
+        }
 
         //    <--- task 1 --->
         TelephonyManager telephonyManager = (TelephonyManager)
@@ -61,7 +70,6 @@ public class MainActivity extends AppCompatActivity{
                             "Software Version " + softwareVersion + System.lineSeparator());
 
     }
-
 
 }
 
