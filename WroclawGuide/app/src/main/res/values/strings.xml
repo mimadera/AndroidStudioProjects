@@ -1,0 +1,14 @@
+<resources>
+    <string name="app_name">WroclawGuide</string>
+    <string name="title_activity_maps">Map</string>
+    <string name="noFilter">no filter</string>
+    <string name="search">Search</string>
+    <string name="food">Food</string>
+    <string name="places">Places</string>
+    <string name="tour_route">Tour Route</string>
+    <string name="events">Events</string>
+    <string name="title_activity_map">Map</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+</resources>

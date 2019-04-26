@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView
+        android:id="@+id/placeDescri"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="33dp"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in r"
+        android:layout_above="@+id/navigateButton"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:id="@+id/logoWroclaw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/belkawroc"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:id="@+id/placeImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/placeDescri"
+        android:layout_marginBottom="16dp"
+        app:srcCompat="@drawable/krasnal" />
+
+    <Button
+        android:id="@+id/navigateButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableBottom="@drawable/navigate"
+        android:text="Nawiguj"
+        android:layout_alignBaseline="@+id/exit"
+        android:layout_alignBottom="@+id/exit"
+        android:layout_alignStart="@+id/logoWroclaw" />
+
+    <Button
+        android:id="@+id/exit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:drawableBottom="@drawable/exit"
+        android:text="Wyjście"
+        android:layout_above="@+id/logoWroclaw"
+        android:layout_alignEnd="@+id/logoWroclaw" />
+</RelativeLayout>
