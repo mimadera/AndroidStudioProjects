@@ -10,7 +10,7 @@ public class Event {
     @DatabaseField(generatedId = true)
     private long id;
 
-    @DatabaseField(canBeNull = false) // this position cannot be null
+    @DatabaseField(canBeNull = false)
     private double longitude;
 
     @DatabaseField(canBeNull = false)

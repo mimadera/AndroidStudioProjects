@@ -22,14 +22,7 @@ public class MainActivity extends Activity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
     }
-    /*
-    @OnClick(R.id.food)
-    public void foodButtonPressed() {
-        Intent intent = new Intent(getApplicationContext(), AttractionsListActivity.class);
-        intent.putExtra("categoryCheck", 3);
-        startActivity(intent);
-    }
-    */
+
     @OnClick(R.id.events)
     public void eventsButtonPressed() {
         Intent intent = new Intent(getApplicationContext(), AttractionsListActivity.class);

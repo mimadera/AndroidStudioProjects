@@ -25,26 +25,27 @@ public class MonumentsAdapter extends ArrayAdapter<Monuments> {
         this.context = context;
     }
 
-    /*
-    optymalizuje proces tworzenia obiektów i gospodarkę pamięcią
-    stała liczba obiektów podmieniania danych nie traci zasobów na tworzenie obiketów
-     */
+
     private static class ViewHolder{
         TextView bodyParameterTextView;
         LinearLayout layout;
     }
+    //klasa trzyma referencje do raz znalezionego pola tekstowego unikajac ciaglych referencji do findViewById()
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         final Monuments dataModel = getItem(position); // pojedyńczuy obiekt ktory chcemy printowac
         ViewHolder viewHolder;
-        if(convertView == null) { //
+        if(convertView == null) { // jezeli converyView jest nullem tworzymy go
             viewHolder = new ViewHolder();
             convertView = LayoutInflater.from(getContext()).inflate(R.layout.single_list_text_view, parent, false);
+            //umieszczamy w nim referencje do znalzeionego metoda findViewById pola tekstowego
             viewHolder.bodyParameterTextView = convertView.findViewById(R.id.listTitleTextView);
-            //viewHolder.layout = convertView.findViewById(R.id.notesLinearLayout); // Layout
+            viewHolder.layout = convertView.findViewById(R.id.notesLinearLayout); // Layout
+            //przypisujemy obiekt ViewHolder do widoku aby wykorzystac go w przyszlosci i nie korzytsac juz z findViewByID
             convertView.setTag(viewHolder);
         } else {
+            //jezeli istnieje to wykorzystujemy go z gotowym polem tekstowym
             viewHolder = (ViewHolder) convertView.getTag();
         }
         viewHolder.bodyParameterTextView.setText(dataModel.getName());

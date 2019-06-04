@@ -11,7 +11,7 @@ public class Monuments {
     @DatabaseField(generatedId = true)
     private long id;
 
-    @DatabaseField(canBeNull = false) // this position cannot be nullem
+    @DatabaseField(canBeNull = false)
     private double longitude;
 
     @DatabaseField(canBeNull = false)

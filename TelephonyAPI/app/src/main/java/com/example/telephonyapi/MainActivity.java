@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.telephony.TelephonyManager;
@@ -16,30 +17,15 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity{
 
-    private TextView textViewSFID;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Bundle extras = getIntent().getExtras();
-        if (extras != null) {
-            String address = extras.getString("MessageNumber");
-            String message = extras.getString("Message");
-            TextView addressField = (TextView) findViewById(R.id.textViewAddress);
-            TextView messageField = (TextView) findViewById(R.id.textViewMessage);
-            addressField.setText("Message From : " +address);
-            messageField.setText("Messsage : "+message);
-            Intent intent = new Intent(
-                    Intent.ACTION_SENDTO,
-                    Uri.parse("smsto:"+address));
-            intent.putExtra("sms_body",
-                    "Michal Madera");
-            startActivity(intent);
-        }
-
+        TextView addressField = findViewById(R.id.textViewAddress);
+        TextView messageField = findViewById(R.id.textViewMessage);
+        TextView textViewSFID = findViewById(R.id.textViewSFID);
         //    <--- task 1 --->
         TelephonyManager telephonyManager = (TelephonyManager)
                 getSystemService(Context.TELEPHONY_SERVICE);
@@ -61,6 +47,7 @@ public class MainActivity extends AppCompatActivity{
         int networkType = telephonyManager.getNetworkType();
         String SIMSerialNumber = telephonyManager.getSimSerialNumber();
         String softwareVersion = telephonyManager.getDeviceSoftwareVersion();
+
 
         textViewSFID.setText("Subscriber ID " + subscriberID + System.lineSeparator() +
                             "Call State " + callState + System.lineSeparator() +

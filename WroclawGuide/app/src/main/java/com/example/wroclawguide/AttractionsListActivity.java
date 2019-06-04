@@ -51,46 +51,26 @@ public class AttractionsListActivity extends AppCompatActivity {
         List<String> monumentsCategories = (ArrayList) MonumentsCategoryRepository.findAllNames(this);
 
         List<String> eventsCategories= (ArrayList) EventCategoryRepository.findAllNames(this);
-        /*
-        List<String> foodsCategories = (ArrayList) FoodCategoryRepository.findAllNames(this);
-        */
         monumentsCategories.add(nothing); // no filter
 
         eventsCategories.add(nothing);
-        /*
-        foodsCategories.add(nothing);
-        */
 
         if (categoryCheck == 1) {
             ArrayAdapter<String> monumentsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, monumentsCategories);
             monumentsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             categorySpinner.setAdapter(monumentsAdapter);
             categorySpinner.setSelection(monumentsCategories.size() - 1);
-            // pierwszy bedzie ustawiony no filter
+
         }
 
         if (categoryCheck == 2){
             ArrayAdapter<String> eventsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, eventsCategories);
             eventsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
             categorySpinner.setAdapter(eventsAdapter);
-            categorySpinner.setSelection(eventsCategories.size() - 1);
+            categorySpinner.setSelection(eventsCategories.size() -1);
         }
-        /*
-        if (categoryCheck == 3){
-            ArrayAdapter<String> foodsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, foodsCategories);
-            foodsAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-            categorySpinner.setAdapter(foodsAdapter);
-            // Setting "no filter" on spinners
-            categorySpinner.setSelection(foodsCategories.size() - 1);
-        }
-        */
     }
-    /*
-    private void setListViewContentFood(ArrayList<Food> foodList) {
-        FoodAdapter adapter = new FoodAdapter(foodList, this);
-        categoryListView.setAdapter(adapter);
-    }
-    */
+
     private void setListViewContentEvent(ArrayList<Event> eventList) {
         EventAdapter adapter = new EventAdapter(eventList, this);
         categoryListView.setAdapter(adapter);
@@ -105,16 +85,6 @@ public class AttractionsListActivity extends AppCompatActivity {
     public void categoryChoose(int position){
         category = (String) categorySpinner.getItemAtPosition(position);
         Log.i("attraction list","search button pressed");
-        /*
-        if (categoryCheck == 3){
-
-            ArrayList<Food> foodList = (ArrayList) FoodRepository.filterList(
-                    FoodRepository.findAll(this),
-                    FoodCategoryRepository.findByName(this, category));
-            setListViewContentFood(foodList);
-            Log.i("attraction list","list Size" + foodList.size());
-        }
-         */
         if (categoryCheck == 2){
             ArrayList<Event> eventList = (ArrayList) EventRepository.filterList(
                     EventRepository.findAll(this),

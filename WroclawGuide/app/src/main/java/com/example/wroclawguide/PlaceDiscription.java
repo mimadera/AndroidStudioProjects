@@ -7,8 +7,11 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.wroclawguide.Database.EventCategoryRepository;
+import com.example.wroclawguide.Database.EventRepository;
 import com.example.wroclawguide.Database.MonumentsCategoryRepository;
 import com.example.wroclawguide.Database.MonumentsRepository;
+import com.example.wroclawguide.DatabaseTables.Event;
 import com.example.wroclawguide.DatabaseTables.Monuments;
 
 import butterknife.BindView;
@@ -57,31 +60,17 @@ public class PlaceDiscription extends AppCompatActivity {
     }
 
     private void loadObject(){
-        /*
+
         if (repositoryUsed == 1){
             Event event = EventRepository.findById(this,placeId);
             String discription = event.getDescription();
             placeDiscription.setText(discription);
-            if (event.getCategory().equals("exhibition")){
+            if (EventCategoryRepository.findById(this, event.getCategory().getId()).getName().equals("Koncert")){
                 placeImg.setImageResource(R.drawable.koncert);
-            }
-            if (EventCategoryRepository.findById(this, event.getCategory().getId()).getName().equals("Event")){
-                placeImg.setImageResource(R.drawable.koncert);
+            }else {
+                placeImg.setImageResource(R.drawable.splash);
             }
         }
-        if (repositoryUsed == 2){
-            Food food = FoodRepository.findById(this,placeId);
-            String discription = food.getDescription();
-            placeDiscription.setText(discription);
-            if (food.getCategory().equals("Restauracje")){
-                placeImg.setImageResource(R.drawable.bernard);
-            }
-            if (FoodCategoryRepository.findById(this, food.getCategory().getId()).getName().equals("Food")){
-                placeImg.setImageResource(R.drawable.bernard);
-            }
-
-        }
-        */
         if (repositoryUsed == 3){
             Monuments monuments = MonumentsRepository.findById(this,placeId);
             String discription = monuments.getDescription();
@@ -90,7 +79,10 @@ public class PlaceDiscription extends AppCompatActivity {
             if (monuments.getCategory().equals("Krasnoludki")){
                 placeImg.setImageResource(R.drawable.krasnal);
             }
-            if (MonumentsCategoryRepository.findById(this, monuments.getCategory().getId()).getName().equals("Monuments")){
+            if (MonumentsCategoryRepository.findById(this, monuments.getCategory().getId()).getName().equals("Zabytki")){
+                placeImg.setImageResource(R.drawable.panorama);
+            }
+            if (MonumentsCategoryRepository.findById(this, monuments.getCategory().getId()).getName().equals("Muzea")){
                 placeImg.setImageResource(R.drawable.panorama);
             }
         }

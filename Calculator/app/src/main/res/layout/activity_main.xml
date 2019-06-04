@@ -17,15 +17,20 @@
         android:layout_height="match_parent"
         android:gravity="bottom"
         android:layout_margin="2dp"
-        >
+        android:orientation="vertical">
         <include
             layout="@layout/buttons"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             />
 
+        <include
+            layout="@layout/history_of_calculation"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            />
+
     </LinearLayout>
-
-
 
 </LinearLayout>

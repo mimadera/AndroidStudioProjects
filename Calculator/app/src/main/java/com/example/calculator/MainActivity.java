@@ -36,13 +36,14 @@ public class MainActivity extends AppCompatActivity {
     private Button BtnC;
     private ListView list ;
     private ArrayAdapter<String> adapter ;
+    private TextView textViewHistory;
+    private ListView historyOfCalculation;
 
     private double value1 = Double.NaN;
     private double value2;
 
     EditText userInput;
     TextView results;
-
 
     String action;
 
@@ -86,6 +87,9 @@ public class MainActivity extends AppCompatActivity {
         BtnAC = findViewById(R.id.BtnAC);
         BtnC = findViewById(R.id.BtnC);
         BtnComma = findViewById(R.id.BtnComma);
+
+        textViewHistory = findViewById(R.id.textViewHistory);
+        historyOfCalculation = findViewById(R.id.historyOfCalculation);
 
         BtnAC.setOnClickListener(new View.OnClickListener() {
             @Override

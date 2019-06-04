@@ -50,9 +50,7 @@ public class MonumentsRepository {
         if(monumentsCategory != null){
 
             for (Monuments e: preFilterList){
-                /*
 
-                 */
                 if (e.getCategory().getId() == monumentsCategory.getId()){
 
                     filteredList.add(e);

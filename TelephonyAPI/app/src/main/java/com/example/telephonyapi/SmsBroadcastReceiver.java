@@ -3,39 +3,41 @@ package com.example.telephonyapi;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Build;
 import android.os.Bundle;
-import android.provider.Telephony;
+import android.telephony.SmsManager;
 import android.telephony.SmsMessage;
-import android.util.Log;
 import android.widget.Toast;
 
 public class SmsBroadcastReceiver extends BroadcastReceiver {
 
-
-    private static final String TAG = "Message recieved";
+    private SmsManager smsManager;
 
     @Override
     public void onReceive(Context context, Intent intent) {
         Bundle pudsBundle = intent.getExtras();
-        Object[] pdus = (Object[]) pudsBundle.get("pdus");
-        SmsMessage messages =SmsMessage.createFromPdu((byte[]) pdus[0]);
+        Object[] data = (Object[]) pudsBundle.get("pdus");
+        SmsMessage messages = SmsMessage.createFromPdu((byte[]) data[0]);
+        Intent smsIntent = new Intent(context,MainActivity.class);
 
-        // Start Application's  MainActivty activity
+        String number = messages.getOriginatingAddress();
+        String text = messages.getMessageBody();
 
-        Intent smsIntent=new Intent(context,MainActivity.class);
+        int messageInInt = Integer.parseInt(text);
 
-        smsIntent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        if (messageInInt <= 5){
+            messageInInt++;
+        }
 
-        smsIntent.putExtra("MessageNumber", messages.getOriginatingAddress());
+        String messageToSend = Integer.toString(messageInInt);
 
-        smsIntent.putExtra("Message", messages.getMessageBody());
+        Toast.makeText(context, "SMS RECEIVED - "
+                + messages.toString(), Toast.LENGTH_LONG).show();
 
-        context.startActivity(smsIntent);
+        this.smsManager = SmsManager.getDefault();
 
-        // Get the Sender Message : messages.getMessageBody()
-        // Get the SenderNumber : messages.getOriginatingAddress()
-
-        Toast.makeText(context, "SMS Received From :"+messages.getOriginatingAddress()+"\n"+ messages.getMessageBody(), Toast.LENGTH_LONG).show();
+        smsManager.sendTextMessage(
+                number, null,
+                messageToSend,
+                null, null);
     }
 }

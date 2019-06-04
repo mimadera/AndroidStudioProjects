@@ -39,9 +39,6 @@ public class EventCategoryRepository {
         List<String> categoriesName = new ArrayList<>();
         for (EventsCategory d : tmp) {
             categoriesName.add(d.getName());
-            /*
-            do listy categories name to co Ci getName zwróci ;)
-             */
         }
         return categoriesName;
     }

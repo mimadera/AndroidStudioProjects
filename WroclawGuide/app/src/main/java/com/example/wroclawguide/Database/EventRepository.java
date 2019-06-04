@@ -50,9 +50,7 @@ public class EventRepository {
         if(eventsCategory != null){
 
             for (Event e: preFilterList){
-                /*
 
-                 */
                 if (e.getCategory().getId() == eventsCategory.getId()){
 
                     filteredList.add(e);

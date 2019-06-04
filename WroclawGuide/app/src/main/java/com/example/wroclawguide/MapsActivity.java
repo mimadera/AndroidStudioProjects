@@ -1,24 +1,17 @@
 package com.example.wroclawguide;
 
 import android.Manifest;
-import android.content.Context;
+
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.graphics.Color;
-import android.location.Location;
-
 import com.example.wroclawguide.Database.EventRepository;
 import com.example.wroclawguide.Database.MonumentsRepository;
 import com.example.wroclawguide.DatabaseTables.Event;
 import com.example.wroclawguide.DatabaseTables.Monuments;
-import com.google.android.gms.common.api.GoogleApiClient;
 import com.google.android.gms.location.FusedLocationProviderClient;
-
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
-import android.widget.Toast;
-
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -27,13 +20,7 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
-import com.google.android.gms.maps.model.Polyline;
-import com.google.android.gms.maps.model.PolylineOptions;
-import com.google.android.gms.tasks.OnSuccessListener;
 
-import java.io.UnsupportedEncodingException;
-import java.util.ArrayList;
-import java.util.List;
 
 public class MapsActivity extends FragmentActivity implements  OnMapReadyCallback{
 
@@ -62,16 +49,6 @@ public class MapsActivity extends FragmentActivity implements  OnMapReadyCallbac
         mFusedLocationClient = LocationServices.getFusedLocationProviderClient(this);
     }
 
-    public void onLocationChanged(Location location) {
-        gMap.clear();
-        MarkerOptions mp = new MarkerOptions();
-        mp.position(new LatLng(location.getLatitude(), location.getLongitude()));
-        mp.title("my position");
-        gMap.addMarker(mp);
-        gMap.animateCamera(CameraUpdateFactory.newLatLngZoom(
-                new LatLng(location.getLatitude(), location.getLongitude()), 16));
-    }
-
     private void loadObject(){
 
         destination = null;
@@ -89,17 +66,6 @@ public class MapsActivity extends FragmentActivity implements  OnMapReadyCallbac
             drawMarker(destination, name);
         }
     }
-
-    /**
-     * Manipulates the map once available.
-     * This callback is triggered when the map is ready to be used.
-     * This is where we can add markers or lines, add listeners or move the camera. In this case,
-     * we just add a marker near Sydney, Australia.
-     * If Google Play services is not installed on the device, the user will be prompted to install
-     * it inside the SupportMapFragment. This method will only be triggered once the user has
-     * installed Google Play services and returned to the app.
-     */
-
     private boolean checkLocationPermission() {
         return ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED
                 && ActivityCompat.checkSelfPermission(getApplicationContext(), Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED;
@@ -158,28 +124,6 @@ public class MapsActivity extends FragmentActivity implements  OnMapReadyCallbac
         gMap.animateCamera(CameraUpdateFactory.zoomIn());
         // Zoom out to zoom level 10, animating with a duration of 2 seconds.
         gMap.animateCamera(CameraUpdateFactory.zoomTo(15), 2000, null);
-/*
-        LatLng sydney = new LatLng(51.107883, 17.038538);
-        gMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-*/
-        //     navigateRequest(sydney, position);
 
     }
-
-
-    /*
-        // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        gMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        gMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
-        ArrayList<Event> EventsList = (ArrayList) EventRepository.findAll(this);
-        for (Event e: EventsList) {
-            gMap.addMarker(new MarkerOptions().position(new LatLng(e.getLatitude(), e.getLongitude())).title(e.getName()));
-        }
-    */
-
-    private List<Marker> originMarkers = new ArrayList<>();
-    private List<Marker> destinationMarkers = new ArrayList<>();
-    private List<Polyline> polylinePaths = new ArrayList<>();
-
 }

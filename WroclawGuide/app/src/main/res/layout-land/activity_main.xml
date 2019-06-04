@@ -11,7 +11,7 @@
         android:drawableBottom="@drawable/map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Events"
+        android:text="events"
         android:layout_below="@+id/space"
         android:layout_alignParentStart="true"
         android:layout_marginTop="19dp"
@@ -22,7 +22,7 @@
         android:drawableBottom="@drawable/food"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Food"
+        android:text="food"
         android:layout_alignBaseline="@+id/events"
         android:layout_alignBottom="@+id/events"
         android:layout_alignParentEnd="true"
@@ -33,7 +33,7 @@
         android:drawableBottom="@drawable/places"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Places"
+        android:text="places"
         android:layout_below="@+id/events"
         android:layout_alignParentStart="true"
         android:layout_toStartOf="@+id/food" />
@@ -51,7 +51,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/food"
-        android:text="Exit"
+        android:text="exit"
         android:layout_alignBottom="@+id/places"
         android:layout_alignParentEnd="true"
         android:layout_toEndOf="@+id/space" />
@@ -74,6 +74,7 @@
         android:src="@drawable/belkawroc"
         android:layout_alignParentEnd="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/places" />
+        android:layout_below="@+id/places"
+        android:visibility="gone"/>
 
 </RelativeLayout>

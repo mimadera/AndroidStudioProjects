@@ -4,9 +4,9 @@ package com.example.wroclawguide;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.util.JsonReader;
 import android.view.Window;
-
 import com.example.wroclawguide.Database.EventCategoryRepository;
 import com.example.wroclawguide.Database.EventRepository;
 import com.example.wroclawguide.Database.MonumentsCategoryRepository;
@@ -15,7 +15,6 @@ import com.example.wroclawguide.DatabaseTables.Event;
 import com.example.wroclawguide.DatabaseTables.EventsCategory;
 import com.example.wroclawguide.DatabaseTables.Monuments;
 import com.example.wroclawguide.DatabaseTables.MonumentsCategory;
-
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
@@ -31,28 +30,24 @@ public class SplashScreenActivity extends Activity {
         setContentView(R.layout.activity_splash_screen);
 
         readJsons();
-/*
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
-            public void run() { */
+            public void run() {
         Intent intent = new Intent(getApplicationContext(), MainActivity.class);
         startActivity(intent);
         finish();
-   /*         }
-        }, 1500); */
+            }
+        }, 1500);
     }
 
     private void readJsons() {
         InputStream eventInputStream = null;
-        InputStream foodInputStream = null;
         InputStream monumentInputStream = null;
         try {
             eventInputStream = getAssets().open("event.json");
             addEventsToDatabase(readEventJsonStream(eventInputStream));
-
-            //foodInputStream = getAssets().open("food.json");
-            //addFoodToDatabase(readFoodJsonStream(foodInputStream));
 
             monumentInputStream = getAssets().open("monuments.json");
             addMonumentsToDatabase(readMonumentJsonStream(monumentInputStream));
@@ -67,13 +62,7 @@ public class SplashScreenActivity extends Activity {
     EVENTS
     ***********************************************************************************************
      */
-    private boolean addEventsToDatabase(List<Event> events) {
-        EventRepository.deleteAllRecords(this);
-        for (Event e : events) {
-            EventRepository.addEvent(this, e);
-        }
-        return true;
-    }
+
 
     public List<Event> readEventJsonStream(InputStream in) throws IOException {
         JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
@@ -129,19 +118,20 @@ public class SplashScreenActivity extends Activity {
         return EventCategoryRepository.findByName(this, categoryName);
     }
 
+    private boolean addEventsToDatabase(List<Event> events) {
+        EventRepository.deleteAllRecords(this);
+        for (Event e : events) {
+            EventRepository.addEvent(this, e);
+        }
+        return true;
+    }
     /*
 
 ***********************************************************************************************
 MONUMENTS
 ***********************************************************************************************
         */
-    private boolean addMonumentsToDatabase(List<Monuments> monuments) {
-        MonumentsRepository.deleteAllRecords(this);
-        for (Monuments e : monuments) {
-            MonumentsRepository.addMonuments(this, e);
-        }
-        return true;
-    }
+
 
     public List<Monuments> readMonumentJsonStream(InputStream in) throws IOException {
         JsonReader reader = new JsonReader(new InputStreamReader(in, "UTF-8"));
@@ -195,5 +185,12 @@ MONUMENTS
 
     private MonumentsCategory getMonumentCategoryFromName(String categoryName) {
         return MonumentsCategoryRepository.findByName(this, categoryName);
+    }
+    private boolean addMonumentsToDatabase(List<Monuments> monuments) {
+        MonumentsRepository.deleteAllRecords(this);
+        for (Monuments e : monuments) {
+            MonumentsRepository.addMonuments(this, e);
+        }
+        return true;
     }
 }
